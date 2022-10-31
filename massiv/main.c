@@ -1,27 +1,24 @@
 #include <stdio.h>
 #define SIZE 10
 
-// функция ввода элементов массива
-void set_mass(int *a, int size); // заменить на указатель a[]
-// функция вывода элементов массива
-void print_mass(int a[], int size);
-// функция поиска максимального элемента в массиве
+// функции и переменные должны называться логично!!
+// если переданная аргумента не меняется внутри функции пишем - const
+// размер массива не может быть отрицательным - пишем const unsigned
+void set_mass(int *array, const unsigned int size); 
+void print_mass(const int a[], const unsigned int size);
+// и так далее ......
 int search_max(int a[], int size);
-// функция поиска минимального элемента в массиве
 int search_min(int a[], int size);
-// функция поиска индекса элемента в массиве по значению number
 int search_index(int a[], int size, int number);
-// меняет элементы местами (переворачивает массив) 
-int reserve(int *a, int size); // заменить на указатель a[]
+int reserve(int *a, int size);
 
-// добавить аргументу size в функции
 // разбить на файлы (main.c, array_func.c array_func.h)
 // добавить Makefile
 
 void set_mass(int *a, int size)
 {
-    
-    for (int i = 0; i < SIZE; ++i) {
+    // беззнаковый (т.к. не может быть размер отрицательным
+    for (unsigned int i = 0; i < SIZE; ++i) {
         scanf("%d", &a[i]);
         setbuf(stdin, NULL);
     }
@@ -79,13 +76,23 @@ int search_min(int a[], int size)
     return min;
 }
 
+// функция ничего не возвращает, просто меняет массив переданный аргументой
 int reserve(int *a, int size)
 {
-    // возвращает обратный массив
+    // меняет массив в обратный порядок
     for (int i = 0; i < SIZE; ++i) {
         printf(" %d ", a[SIZE - i - 1]);
     }
     printf("\n");
+    /*
+       int tmp = array[0];
+        for (unsigned int i = 0, j = size - 1; i < size / 2; ++i, --j) {
+            array[i] = array[j];
+            array[j] = tmp;
+            tmp = array[i + 1];
+        }
+    */
+    
 }
 
 int main()
