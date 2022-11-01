@@ -1,7 +1,7 @@
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 
-all: array run
+all: array
 
 array:
 	@${CC} ${FLAGS} main.c func.c -o array

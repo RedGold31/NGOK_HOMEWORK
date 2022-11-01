@@ -33,9 +33,7 @@ int search_max(int array[], unsigned int size)
 
 int search_index(int array[], int size, int number)
 {
-    number = 0;
     int index = 0;
-
     for (int i = 0; i < size; ++i) {
         if (array[i] == number) {
             index = i;
@@ -67,4 +65,45 @@ void reserve(int *array, const unsigned int size)
         array[j] = tmp;
         tmp = array[i + 1];
     }
+}
+
+void bubble_sort(int *array, const unsigned int size)
+{
+    int tmp = 0;
+
+    for (unsigned int i = 0; i < size - 1; ++i) {
+        for (unsigned int j = 0; j < size - i - 1; ++j) {
+            if (array[j] > array[j + 1]) {
+                tmp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = tmp;
+                tmp = array[j + 1];
+            }
+        }
+    }
+}
+
+int binary_search(int array[], int size, int number)
+{
+    int min_i = 0;
+    int max_i = size;
+    int mid_i = max_i / 2;
+    int res = -1;
+
+    while (1) {
+        if (number > array[mid_i]) {
+            min_i = mid_i;
+            mid_i = (min_i + max_i) / 2;
+        } else if (number == array[mid_i]) {
+            res = mid_i;
+            break;
+        } else {
+            max_i = mid_i;
+            mid_i = (max_i + mid_i - 1) / 2;
+        }
+        if ((mid_i == 0 || mid_i == size - 1) && number != array[mid_i]) {
+            break;
+        }
+    }
+    return res;
 }
