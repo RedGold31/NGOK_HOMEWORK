@@ -1,6 +1,7 @@
 #include "func.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void set_mass(int *array, const unsigned int size)
 {
@@ -89,6 +90,7 @@ int binary_search(int array[], int size, int number)
     int max_i = size;
     int mid_i = max_i / 2;
     int res = -1;
+    int count = 0;
 
     while (1) {
         if (number > array[mid_i]) {
@@ -104,6 +106,33 @@ int binary_search(int array[], int size, int number)
         if ((mid_i == 0 || mid_i == size - 1) && number != array[mid_i]) {
             break;
         }
+        ++count;
     }
+
+    printf("cont - %d ", count);
     return res;
+}
+
+void fillrandom(int *array, const unsigned int size)
+{
+    srand(time(NULL));
+    for (unsigned int i = 0; i < size; ++i) {
+        array[i] = 0 + rand() % (size - 0 + 1);
+    }
+}
+
+void array_swap(int *array, const unsigned int size, int *array_2,
+                const unsigned int size_2)
+{
+    if (size == size_2) {
+        int tmp = array[0];
+
+        for (unsigned int i = 0; i < size; ++i) {
+            array[i] = array_2[i];
+            array_2[i] = tmp;
+            tmp = array[i + 1];
+        }
+    } else {
+        printf("DIFFERENT SIZE ARRAYS!\n");
+    }
 }

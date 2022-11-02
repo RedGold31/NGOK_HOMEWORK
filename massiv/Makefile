@@ -10,4 +10,4 @@ run:
 	@./array
 
 clean:
-	@rm -rf array *.out
+	@rm -rf array *.out .vscode/
