@@ -43,11 +43,34 @@ void fill_matrix(matrix_t *matrix)
     }
 }
 
-int eq_size(matrix_t *A, matrix_t *B)
+int eq_size(matrix_t *neo, matrix_t *Morfius)
 {
     int res = 0;
-    if (A->rows == B->rows && A->cols == B->cols) {
-        int res = 1;
-        printf(" %d ", res);
+    if (neo->rows == Morfius->rows && neo->cols == Morfius->cols) {
+        res = 0;
+        return res;
     }
+    return res;
+    
+}
+
+int eq_matrix(matrix_t *neo, matrix_t *Morfius)
+{
+    int res = 0;
+    if(eq_size(neo, Morfius)){
+        for(int i = 0; i < neo->rows; ++i){
+            for(int j = 0; j < neo->cols; ++j){
+                if(neo->matrix[i][j] == Morfius->matrix[i][j]){
+                }
+                else{
+                    return res;
+                }
+            }
+        }
+    }
+    else {
+        ++res;
+        return res;
+    }
+    return 0;
 }
