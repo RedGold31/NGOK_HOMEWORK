@@ -20,5 +20,7 @@ matrix_t mult_matrix(matrix_t *A, matrix_t *B);
 matrix_t tran_matrix(matrix_t *A);
 matrix_t minr_matrix(matrix_t *A, int ip, int jp);
 double det_matrix(matrix_t *A);
+matrix_t calc_complements(matrix_t *A);
+matrix_t inverse_matrix(matrix_t *A);
 
 #endif // _FUNC_H_
