@@ -1,6 +1,18 @@
 #ifndef _FUNC_H_
 #define _FUNC_H_
 
+#define CUP_X 20
+#define CUP_Y 10
+#define FIGURE_X 4
+#define FIGURE_Y 2
+#define A 97
+#define S 115
+#define D 100
+#define Q 113
+#define ENTER 10
+#define W 119
+#define SPACE 32
+
 typedef struct {
     char **cup;
     int cup_x;
@@ -23,10 +35,12 @@ void remove_cup(cup_t *cup);
 void fill_smash_boy(figure_t *figure);
 
 void added_figure(cup_t *cup, figure_t *figure);
-
-void move_down(figure_t *figure);
+int move_down(figure_t *figure);
 void move_left(figure_t *figure);
 void move_right(figure_t *figure);
+void copy_figure(figure_t *curr, figure_t *next);
+void delete_figure(cup_t *cup, figure_t *figure);
+// не сталкивались
 
 void clear_ghost(cup_t *cup, figure_t *figure);
 

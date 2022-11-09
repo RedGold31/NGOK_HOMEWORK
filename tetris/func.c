@@ -107,3 +107,75 @@ void added_figure(cup_t *cup, figure_t *figure)
         cup->cup[figure->figure[i][0]][figure->figure[i][1]] = '*';
     }
 }
+
+int move_down(figure_t *figure)
+{
+    int breaker = 1;
+    for (int i = 0; i < figure->figure_x && breaker; ++i) {
+        for (int j = 0; j < figure->figure_y && breaker; ++j) {
+            if (figure->figure[i][j] == CUP_X - 1) {
+                breaker = 0;
+                break;
+            }
+        }
+    }
+
+    for (int i = 0; i < figure->figure_x && breaker; ++i) {
+        figure->figure[i][0] += 1;
+    }
+    return breaker;
+}
+
+void move_left(figure_t *figure)
+{
+
+    int breaker = 1;
+    for (int i = 0; i < figure->figure_x && breaker; ++i) {
+        for (int j = 0; j < figure->figure_y && breaker; ++j) {
+            if (figure->figure[i][j] == 0) {
+                breaker = 0;
+                break;
+            }
+        }
+    }
+
+    for (int i = 0; i < figure->figure_x && breaker; ++i) {
+        figure->figure[i][1] -= 1;
+    }
+}
+
+void move_right(figure_t *figure)
+{
+
+    int breaker = 1;
+    for (int i = 0; i < figure->figure_x && breaker; ++i) {
+        for (int j = 0; j < figure->figure_y && breaker; ++j) {
+            if (figure->figure[i][j] == CUP_Y - 1) {
+                breaker = 0;
+                break;
+            }
+        }
+    }
+
+    for (int i = 0; i < figure->figure_x && breaker; ++i) {
+        figure->figure[i][1] += 1;
+    }
+}
+
+void copy_figure(figure_t *curr, figure_t *next)
+{
+    next->figure_x = curr->figure_x;
+    next->figure_y = curr->figure_y;
+    for (int i = 0; i < curr->figure_x; ++i) {
+        for (int j = 0; j < curr->figure_y; ++j) {
+            next->figure[i][j] = curr->figure[i][j];
+        }
+    }
+}
+
+void delete_figure(cup_t *cup, figure_t *figure)
+{
+    for (int i = 0; i < figure->figure_x; ++i) {
+        cup->cup[figure->figure[i][0]][figure->figure[i][1]] = ' ';
+    }
+}
