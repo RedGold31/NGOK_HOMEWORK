@@ -15,7 +15,7 @@ int main()
 
     figure_t tmp;
 
-    int res = 0, down = 0;
+    int res = 0, down = 1;
     tmp = create_figure(FIGURE_X, FIGURE_Y);
     added_figure(&cup, &smash_boy);
     system("clear");
@@ -31,24 +31,36 @@ int main()
                 break;
             case A:
                 copy_figure(&smash_boy, &tmp);
-                move_left(&smash_boy);
+                move_left(&smash_boy, &cup);
                 break;
             case S:
                 copy_figure(&smash_boy, &tmp);
-                down = move_down(&smash_boy);
+                down = move_down(&smash_boy, &cup);
                 break;
             case D:
                 copy_figure(&smash_boy, &tmp);
-                move_right(&smash_boy);
+                move_right(&smash_boy, &cup);
+                break;
+            case SPACE:
+                while (down) {
+                    copy_figure(&smash_boy, &tmp);
+                    down = move_down(&smash_boy, &cup);
+                    delete_figure(&cup, &tmp);
+                    added_figure(&cup, &smash_boy);
+                    system("clear");
+                    print_cup(&cup);
+                }
                 break;
             }
             delete_figure(&cup, &tmp);
-
             added_figure(&cup, &smash_boy);
             system("clear");
             print_cup(&cup);
             if (!down) {
                 fill_smash_boy(&smash_boy);
+                added_figure(&cup, &smash_boy);
+                system("clear");
+                print_cup(&cup);
             }
         }
     }

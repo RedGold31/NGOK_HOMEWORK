@@ -35,11 +35,16 @@ void remove_cup(cup_t *cup);
 void fill_smash_boy(figure_t *figure);
 
 void added_figure(cup_t *cup, figure_t *figure);
-int move_down(figure_t *figure);
-void move_left(figure_t *figure);
-void move_right(figure_t *figure);
+int move_down(figure_t *figure, cup_t *cup);
+void move_left(figure_t *figure, cup_t *cup);
+void move_right(figure_t *figure, cup_t *cup);
 void copy_figure(figure_t *curr, figure_t *next);
 void delete_figure(cup_t *cup, figure_t *figure);
+int up_dot(figure_t *figure);
+int down_dot(figure_t *figure);
+
+int left_dot(figure_t *figure);
+int right_dot(figure_t *figure);
 // не сталкивались
 
 void clear_ghost(cup_t *cup, figure_t *figure);
