@@ -2,24 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void menu()
-{
-    int res = 0;
-    while (res != 2) {
-        printf("    Menu\n   1.Start \n   2.Exit\n");
-        scanf("%d", &res);
-        setbuf(stdin, NULL);
-        switch (res) {
-        case 1:
-            //   igra;
-
-            break;
-
-        default:
-            break;
-        }
-    }
-}
+void menu() {}
 
 cup_t create_cup(int cup_x, int cup_y)
 {
@@ -42,9 +25,9 @@ void print_cup(cup_t *cup)
 {
     for (int i = 0; i < cup->cup_x; ++i) {
         for (int j = 0; j < cup->cup_y; ++j) {
-            printf(" %c ", cup->cup[i][j]);
+            printw(" %c ", cup->cup[i][j]);
         }
-        printf("\n");
+        printw("\n");
     }
 }
 
@@ -154,7 +137,6 @@ void move_left(figure_t *figure, cup_t *cup)
 void move_right(figure_t *figure, cup_t *cup)
 {
     int right = right_dot(figure);
-    printf("right = %d\n", right);
     int breaker = 1;
     for (int i = 0; i < figure->figure_x && breaker; ++i) {
         if (figure->figure[i][1] == CUP_Y - 1) {
@@ -210,7 +192,7 @@ int down_dot(figure_t *figure)
             max = figure->figure[i][0];
         }
     }
-    Q return max;
+    return max;
 }
 
 int left_dot(figure_t *figure)

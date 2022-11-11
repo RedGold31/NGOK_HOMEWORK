@@ -1,6 +1,8 @@
 #ifndef _FUNC_H_
 #define _FUNC_H_
 
+#include <ncurses.h>
+
 #define CUP_X 20
 #define CUP_Y 10
 #define FIGURE_X 4
@@ -45,7 +47,6 @@ int down_dot(figure_t *figure);
 
 int left_dot(figure_t *figure);
 int right_dot(figure_t *figure);
-// не сталкивались
 
 void clear_ghost(cup_t *cup, figure_t *figure);
 
