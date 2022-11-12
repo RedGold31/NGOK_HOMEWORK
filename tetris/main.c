@@ -1,7 +1,7 @@
 #include "func.h"
+#include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ncurses.h>
 
 int main()
 {
@@ -23,6 +23,9 @@ int main()
     figure_t tmp;
 
     int res = 0, down = 1;
+    int cur_up = 0;
+    int cur_down = 0;
+    int hight = CUP_X - 1;
     tmp = create_figure(FIGURE_X, FIGURE_Y);
 
     while (res != Q) {
@@ -59,8 +62,18 @@ int main()
         print_cup(&cup);
 
         if (!down) {
+            cur_down = down_dot(&current_figure);
+            cur_up = up_dot(&current_figure);
+            //  проверка высоты
+            if (hight > cur_up) {
+                hight = cur_up;
+            }
+
+            int res = cup_analys(&cup, cur_up, cur_down);
+            mvwprintw(stdscr, 23, 0, "res = %d\n", res);
             fill_smash_boy(&current_figure);
         }
+        mvwprintw(stdscr, 22, 0, "hight = %d\n", hight);
     }
     remove_figure(&tmp);
     remove_figure(&current_figure);

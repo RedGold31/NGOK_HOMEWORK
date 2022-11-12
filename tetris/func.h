@@ -44,7 +44,7 @@ void copy_figure(figure_t *curr, figure_t *next);
 void delete_figure(cup_t *cup, figure_t *figure);
 int up_dot(figure_t *figure);
 int down_dot(figure_t *figure);
-
+int cup_analys(cup_t *cup, int up_dot, int down_dot);
 int left_dot(figure_t *figure);
 int right_dot(figure_t *figure);
 

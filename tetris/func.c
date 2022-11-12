@@ -217,3 +217,29 @@ int right_dot(figure_t *figure)
     }
     return max;
 }
+int cup_analys(cup_t *cup, int up_dot, int down_dot)
+{
+    int count = 0;
+    int res = 0;
+    int k = 0;
+    int max[4] = {-1};
+    for (int i = down_dot; i >= up_dot; --i) {
+        for (int j = 0; j < CUP_Y; ++j) {
+            if (cup->cup[i][j] != ' ') {
+                count++;
+            }
+        }
+        if (count == 10) {
+            max[k] = i;
+            ++k;
+            count = 0;
+            res++;
+        }
+    }
+    if (res != 0) {
+        // delete_line(cup, array, height)
+    }
+    return res;
+}
+
+// delete_line(cup, array, height)
